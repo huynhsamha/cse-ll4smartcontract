@@ -1,0 +1,93 @@
+\subsection{Exponentials connectives}
+Trong linear logic, ngoài các connectives (dịch là phép tuyển) \textit{multiplicatives} và \textit{additives} như trên đã trình bày, còn một loại connective khác là \textit{exponentials} (dịch ra là số mũ, ý chỉ cấp số mũ, tăng nhanh chóng hay vô hạn), trong đó bao gồm 2 loại connectives là $ ! $ và $ ? $. Chi tiết của hai loại connectives này sẽ được trình bày trong section này.
+
+\subsubsection{Connective !}
+Đây là một connective trong linear logic, được đọc là \textit{"of course"} (dịch ra là \textit{tất nhiên}) hay \textit{"bang"}. Connective này diễn tả một tài nguyên có tiềm năng vô tận, ý nghĩa là dùng để chỉ sự sản sinh, hay có được một số lượng không giới hạn của một yếu tố nào đó. Cụ thể:
+
+\begin{center}
+	\textbf{!A}: \textit{có nghĩa là tạo ra một lượng không giới hạn yếu tố A.}
+\end{center}
+
+
+\textbf{Ví dụ 1} 
+
+Trong thực đơn menu của một nhà hàng nêu rõ một phần ăn giá \$5 dành cho một người gồm các phần ăn như sau:
+
++ Hamburger
+
++ Fries or Wedges
+
++ Unlimited Pepsi
+
++ Ice-cream or Sorbet
+
+Ta có thể chuyển bài toán trên thành linear logic với các connectives đã học. Cụ thể kí hiệu Hamburger (H), Fries (F), Wedges (W), Pepsi (P), Ice-cream (I) và Sorbet (S), khi đó ta có:
+
+$$ \$1 \otimes \$1 \otimes \$1 \otimes \$1 \otimes \$1 \multimap  H \otimes (F \& W) \otimes !P \otimes (I \oplus S) $$
+
+Ta thấy trong ví dụ này, ta sử dụng connective $ ! $ cho trường hợp ta tạo ra một lượng không giới hạng pepsi.
+
+\vspace{0.5cm}
+\textbf{Ví dụ 2}
+
+Xét một ví dụ khác liên quan đến \textit{Constraint Handling Rules (CHR)}. Xét bài toán tung đồng xu ta luôn có một trong hai kết quả là mặt ngửa và mặt xấp mỗi khi tung đồng xu. Cụ thể trong logic cổ điển ta có thể diễn tả như sau
+
+$$ (throw(Coin) \Leftrightarrow Coin = head) \wedge (throw(Coin)  \Leftrightarrow Coin
+ = tail) $$
+
+Có nghĩa khi tung đồng xu, không phải mặt ngửa thì là mặt xấp. Còn trong linear logic, chúng ta có thể dùng biểu thức sau để nhấn mạnh tính đúng đắn của định luật trên bằng connective $ ! $ (dịch ra là \textit{tất nhiên}) như sau:
+
+$$ ! (throw(Coin) \multimap ( (Coin = head) \& (Coin = tail)) $$
+
+Biểu thức trên sử dụng connective $ ! $ để chỉ ra việc ta có một tiềm năng vô hạn về việc khi chi tiêu A (tung đồng xu), ta sẽ có được B (không ngửa thì là xấp). Cũng có thể đọc là \textit{"Tất nhiên khi tung đồng xu, không phải mặt ngửa thì là mặt xấp"}.
+
+\subsubsection{Connective ?}
+Tiếp theo, ta sẽ nói về connective còn lại trong Exponentials connective trong linear logic, đó là connective $ ? $, được đọc là \textit{"why not"}.
+
+Ngược lại với connective $ ! $, connective $ ? $ diễn tả một thực tế về tài nguyên hiện tại có tiềm năng vô tận, tức mang ý nghĩa chi tiêu (tiêu thụ) một lượng không giới hạn một yếu tố, cụ thể:
+
+\begin{center}
+\textbf{?A}: \textit{có nghĩa chi tiêu một lượng không giới hạn yếu tố A.}
+\end{center}
+
+
+\textbf{Ví dụ}
+
+
+Trong thực tế, sẽ không có ví dụ nào minh họa được tính có sẵn nguồn lực vô hạn mà cụ thể, ta đều có thể ước tính được lượng cần sử dụng cần thiết để tạo ra một thứ gì đó. Lấy ví dụ như trong việc sử dụng các nguồn năng lượng tự nhiên như năng lượng gió, năng lượng mặt trời, năng lượng nước, băng các thực nghiệm và tính toán, ta đều có thể ước tính được lượng ta cần sử dụng để tạo ra một khối lượng sản phẩm đầu ra sau cùng.
+
+Cụ thể, trong ngành năng lượng thủy điện, sử dụng nước để tạo ra điện, lấy ví dụ người ta cần dùng $ 500 m^{3} $ nước để sản sinh ra $ 1 kJ $ điện năng. Tuy nhiên ta có thể giả sử việc sử dụng lượng nước bao nhiêu là không tính trước được, hoặc ta cần một lượng vô hạng điện năng, ta có thể sử dụng linear logic để biểu diễn bài toán như sau:
+
+$$ ?(hydro) \multimap 1 kJ \text{ hay } ?(hydro) \multimap !(electric) $$
+
+Lấy một ví dụ khác trong ngành điện gió, ta cần một lượng động năng sinh ra từ gió không giới hạn để tạo ra một lượng điện năng cho toàn bộ thành phố (cũng chưa biết):
+
+$$ ?(wind) \multimap  !(electric) $$
+
+\subsubsection{Liên hệ của ! và ? trong linear logic}
+Trong linear logic, ta có mối quan hệ sau
+
+$$ (?A)^{\bot} = !(A^{\bot}) \text{   và   } (!A)^{\bot} = ?(A^{\bot}) $$
+
+Trong đó hai connectives này là dual của nhau.
+
+\subsubsection{Một số biểu thức liên quan}
+
+\vspace{0.4cm}
+\textbf{Biểu thức 1.} $ !(A\&B) \equiv !A \otimes !B $
+\vspace{0.4cm}
+
+Biểu thức này nói rằng có sự tương đường giữa hai yếu tố $ !(A\&B) $ và $ !A \otimes !B $. Ta có thể giải thích như sau:
+
++ $ !(A\&B) $: có nghĩa là ta có được một lượng vô hạn các sự lựa chọn (mang tính chủ động, phụ thuộc cách chọn của ta) các yếu tố A, hoặc B. Do đó ở mỗi lần lựa chọn trong số vô hạn lần tạo ra, ta có thể tùy ý chọn A hoặc chọn B.
+
++ $ !A \otimes !B  $: còn công thức này có nghĩa là ta tạo ra được cả A lẫn B, trong đó không giới hạn số lượng A, hay B tạo ra. Có nghĩa ta có được vô hạn lần A cũng như vô hạn lần B.
+
+Qua đó ta thấy có sự tương đương giữa 2 công thức, đều muốn đề cập đến việc có được vô hạn các yếu tố A và B. 
+
+
+\vspace{0.5cm}
+\textbf{Biểu thức 2.} \textbf{$ A \otimes !(A \multimap B) \vdash B \otimes !(A \multimap B) $}
+\vspace{0.4cm}
+
+Đây là một sequent chỉ ra rằng khi có A và "luôn có" tính chất "Chi tiêu A sẽ được B", thì ta sẽ có B, cũng như tính chất trên không thay đổi. Điều này hiển nhiên là đúng và ở đây ta thấy được việc sử dụng connective ! để chỉ một tính chất luôn đúng mà ta có được (ở đây là chi tiêu A sẽ được B).

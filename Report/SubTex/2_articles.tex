@@ -1,0 +1,49 @@
+\subsection{Mô tả các điều khoản cho ngữ cảnh smart contract}
+
+Trong ngữ cảnh của bài toán trên, ta có 2 đối tượng cần xem xét là bên thuê A và bên vận chuyển B. Giữa 2 đối tượng có những quan hệ và ràng buộc, cần được chuyển thành những điều khoản cụ thể được quy định trong smart contract. Smart contract đóng vai trò là bên thứ 3 quy định các điều khoản này, tạo nên niềm tin giữa 2 bên khi 2 bên không có niềm tin tưởng cho nhau. Cụ thể ta có thể cụ thể thành các điều khoản sau cho smart contract:
+
+
+\subsubsection*{Article 1.}
+Bên A đưa ra thông tin về hàng hóa $ p\_info $ cần bên B vận chuyển (gồm tính chất, chất lượng, số lượng, ...), các thông tin về thời gian (gồm các thời gian được nêu trong các điều khoản khác), địa điểm (gồm các địa điểm được nêu trong các điều khoản khác), tiền bạc (gồm các chi phí được nêu trong các điều khoản khác). Tất cả các thông tin được smart contract ghi lại và public cho 2 phía.
+
+\subsubsection*{Article 2.}
+Bên B đưa ra các thông tin về thời gian (gồm các thời gian được nêu trong các điều khoản khác), tiền bạc (gồm các chi phí được nêu trong các điều khoản khác). Tất cả thông tin được smart contract ghi nhận lại và public cho 2 phía.
+
+\subsubsection*{Article 3.}
+Bên A gửi toàn bộ số tiền $ m\_A $ mà bên B sẽ được nhận nếu bên B hoàn thành đúng việc vận chuyển vào smart contract. Smart contract sẽ giữ số tiền này.
+
+\subsubsection*{Article 4.}
+Bên B gửi số tiền sẽ phải tiền đặt cọc $ m\_B $ tối thiểu phải là số tiền bồi thường tối đa mà B phải chịu trong suốt quá trình smart contract vận hành vào smart contract. Smart contract sẽ giữ số tiền này.
+
+\subsubsection*{Article 5.}
+Bên B đưa phương tiện vận chuyển đến tại nơi bên A ký gửi hàng $ a\_A\_gui $ trước hoặc đúng thời gian ký gửi hàng $ t\_B\_nhan $ được quy định trước trong smart contract. Nếu đúng, smart contract tiếp tục vận hành.
+
+\subsubsection*{Article 6.}
+Nếu bên B đến nơi nhận hàng $ a\_A\_gui $ trễ hơn thời gian $ t\_B\_nhan $ chưa quá $ dt\_B\_tre\_nhan $ (tức trong hạn $ (t\_B\_nhan; t\_B\_nhan + dt\_B\_tre\_nhan] $) được quy định trước trong smart contract, thì bên B có trách nhiệm bồi thường khoản thiệt hại $ m\_B\_tre $ được quy định trước trong smart contract. Lúc này smart contract gửi số tiền $ m\_B\_tre $ từ smart contract vào tài khoản của A.
+
+\subsubsection*{Article 7.}
+Nếu bên B đến nơi nhận hàng $ a\_A\_gui $ trễ hơn thời hạn tối đa cho phép trễ, tức sau $ t\_B\_nhan + dt\_B\_tre\_nhan $, thì hợp đồng này coi như hủy bỏ, và bên B có trách nhiệm bồi thường với số tiền $ m\_B\_huy $ cho bên A. Lúc này smart contract sẽ trả lại số tiền $ m\_A $ cho bên A, đồng thời gửi $ m\_B\_huy $ vào tài khoản A. Số tiền dư còn lại của bên B là $ m\_B-m\_B\_huy $ sẽ được smart contract trả lại cho bên B 
+
+\subsubsection*{Article 8.}
+Nếu bên B đến nhận hàng đúng thời điểm $ t\_B\_nhan $ mà bên A chưa có hàng để giao không quá $ dt\_A\_tre\_gui $ thì bên A có trách nhiệm bồi thường cho bên B về chi phí đi lại là $ m\_A\_tre\_gui $ cho bên B. Lúc này smart contract sẽ gửi số tiền $ m\_A\_tre\_gui $ từ smart contract cho bên B.
+
+\subsubsection*{Article 9.}
+Nếu bên B đến nhận hàng trong thời gian quy định mà bên A không có hàng để giao quá thời gian trễ cho phép là $ dt\_A\_tre\_gui $, smart contract coi như hủy bỏ và bên A phải bồi thường khoảng tiền $ m\_A\_khong\_dung\_hen $ cho bên B. Lúc này smart contract sẽ gửi số tiền $ m\_B + m\_A\_khong\_dung\_hen $ cho bên B và số tiền ban đầu còn lại của A $ m\_A - m\_A\_khong\_dung\_hen $ cho bên A.
+
+\subsubsection*{Article 10.}
+Nếu bên B đến nhận hàng trong thời gian quy định mà hàng $ p\_nhan $ không đúng với bên A đề cập trong smart contract, tức $ p\_nhan != p\_info $, smart contract hủy bỏ và bên A chịu khoảng bồi thường là $ mA\_khong\_dung\_hang $ cho bên B. Lúc này smart contract sẽ gửi số tiền $ m\_B + mA\_khong\_dung\_hang $ cho bên B và số tiền ban đầu còn lại của A $ m\_A - mA\_khong\_dung\_hang $ cho bên A.
+
+\subsubsection*{Article 11.}
+Khi bên B đã hoàn tất thủ tục nhận hàng gửi, bên B phải đảm bảo giao đúng địa điểm $ a\_A\_nhan $ và đúng hẹn trước khoảng thời gian $ t\_A\_nhan $ trong smart contract. Nếu giao đúng hẹn, smart contract tiếp tục hoạt động.
+
+\subsubsection*{Article 12.}
+Nếu bên B giao hàng trễ hơn so với thời gian quy định không quá $ dt\_B\_tre\_gui $, bên B phải bồi thường thiệt hại cho bên A với khoảng tiền $ m\_B\_tre\_gui $ cho bên A. Lúc này smart contract sẽ gửi số tiền $ m\_B\_tre\_gui $ cho bên A.
+
+\subsubsection*{Article 13.}
+Nếu bên B không có hàng để giao hoặc làm mất số hàng, smart contract xem như hủy bỏ và bên B bồi thường khoảng tiền $ m\_B\_khong\_hang $ cho bên A. Lúc này smart contract sẽ gửi số tiền $ m\_A + m\_B\_khong\_hang $ cho bên A và số tiền ban đầu còn lại của B $ m\_B - m\_B\_khong\_hang $ cho bên B.
+
+\subsubsection*{Article 14.}
+Bên B phải đảm bảo hàng $ p\_nhan $ bên A còn nguyên vẹn, không hư hỏng và còn được niên phong nếu có (mệnh đề $ hang\_on(p\_nhan) $ thỏa), nếu không bên B phải chịu bồi thường thiệt hại là $ m\_B\_hang\_hong $ như trong smart contract. Lúc này smart contract sẽ gửi số tiền $ m\_B\_hang\_hong $ cho A.
+
+\subsubsection*{Article 15.}
+Sau khi bên B giao hàng đúng thời hạn và đúng địa điểm cho bên A, đồng thời không xảy ra bất cứ khiếu nại tranh chấp nào, smart contract coi như hoàn tất và số tiền thù lao cho B từ smart contract sau khi đã trừ các khoản bồi thường sẽ được chuyển vào tài khoản của B. Số tiền đặt cọc ban đầu của B sau khi đã trừ các khoản bồi thường nếu có cũng được trả lại cho B. Bên A lúc này không còn khoản tiền nào được nhận lại từ smart contract. Lúc này smart contract cũng không còn khoản tiền nào trong tài khoản.

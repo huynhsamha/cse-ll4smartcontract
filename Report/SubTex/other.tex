@@ -1,0 +1,49 @@
+% frame cho text
+\usepackage[framemethod=default]{mdframed} 
+\mdfdefinestyle{green}{
+	innerleftmargin=20,innerrightmargin=20,
+	innertopmargin = 15, innerbottommargin = 15,
+	hidealllines=true, 
+	backgroundcolor=green!30, 
+}
+\mdfdefinestyle{pink}{
+	innerleftmargin=20,innerrightmargin=20,
+	innertopmargin = 15, innerbottommargin = 15,
+	hidealllines=true,
+	backgroundcolor=red!10
+}
+\mdfdefinestyle{blue1}{
+	innerleftmargin=20,innerrightmargin=20,
+	innertopmargin = 15, innerbottommargin = 15,
+	hidealllines=true, 
+	backgroundcolor=blue!10
+}
+\mdfdefinestyle{blue2}{
+	innerleftmargin=50,
+	innertopmargin = 15, innerbottommargin = 15,
+	hidealllines=true, 
+	backgroundcolor=blue!5
+}
+
+% draw the line
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\newcommand\HRule{\rule{\textwidth}{1pt}}
+
+% link color
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks,                   % surround the links by color frames
+	linkcolor = {red!50!black},   % color of internal links (sections, pages, etc.)
+	citecolor = {blue!60!black},  % color of citation links (bibliography)
+	urlcolor  = {blue!60!black},  % color of URL links (mail, web)
+	filecolor = {blue!60!black},  % color of file links
+}
+
+% other
+
+\usepackage[font={small,it}]{caption}
+\usepackage[linguistics]{forest}
+
+\everymath\expandafter{\the\everymath \color{blue}}
+\everydisplay\expandafter{\the\everydisplay \color{blue}}

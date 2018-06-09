@@ -1,0 +1,52 @@
+\documentclass[12pt,a4paper,titlepage]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb, stmaryrd}
+\usepackage{amsthm}    % môi trường math
+\usepackage{vntex}     % tiếng việt
+\usepackage{graphicx}  % chèn hình ảnh
+\usepackage{xcolor}    % màu sắc 
+\usepackage{qtree}     % vẽ sơ đồ cây
+\usepackage{url}
+\usepackage{framed}    % đóng khung đoạn văn
+\usepackage{verbatim}  % định dạng text
+\usepackage{lastpage}  % trang ... / (trang cuối tài liệu)
+\usepackage{diagbox}   % kẻ đường chéo trong bảng
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}  % căn lề
+
+\input{SubTex/headfoot.tex}
+\input{SubTex/other.tex}
+
+\author{Huỳnh Sâm Hà - 1610852@hcmut.edu.vn}
+\title{Báo cáo}
+
+\begin{document}
+	
+\input{SubTex/cover.tex}
+
+\fontsize{12pt}{16} \selectfont
+\newpage\tableofcontents\thispagestyle{empty} 
+\newpage\setcounter{page}{1}
+
+\paragraph*{}\vspace{1.5cm}
+
+\listoffigures\addcontentsline{toc}{section}{\listfigurename}
+
+\newpage
+\listoftables \addcontentsline{toc}{section}{\listtablename}
+
+\newpage
+
+\input{SubTex/0_gioithieu.tex}                             
+\input{SubTex/1_baitoan_1.tex}
+\input{SubTex/2_baitoan2.tex}   
+\input{SubTex/3_baitoan3.tex}   
+\input{SubTex/4_baitoan4.tex}   
+\input{SubTex/5_baitoan5.tex}   
+\input{SubTex/6_ketluan.tex}   
+
+\include{SubTex/thamkhao}
+\include{SubTex/phuluc}
+
+\end{document}
