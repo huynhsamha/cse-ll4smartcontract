@@ -1,16 +1,16 @@
 % insert \cite{name1, name2, ...}
 
 \section*{}
-\renewcommand{\refname}{Tài liệu tham khảo}
-\addcontentsline{toc}{section}{\bibname}
-
-\bibliographystyle{acm}
-\bibliography{SubTex/bibtex}
-
-
-\iffalse 
-
-\input{SubTex/bibtex.bib} 
-
-\fi
+\addcontentsline{toc}{section}{Tài liệu tham khảo}
+\begin{thebibliography}{99999}
+	\bibitem[LL14]{LL14} {A Very Rough Introduction to Linear Logic, John Wickerson, Imperial College London, January 7, 2014}
+	
+	\bibitem[LL13]{LL13} {What about Linear Logic in Computer Science?, Daniel Mihályi, Valerie Novitzká, Department of Computers and Informatics, Technical University of Košice Košice, Slovakia}
+	
+	\bibitem[BF05]{BF05} {A Linear-Logic Semantics for Constraint Handling Rules, Hariolf Betz and Thom Fruhwirth, Faculty of Computer Science, University of Ulm, Germany}
+	
+	\bibitem[Gir95]{Gir95} {LINEAR LOGIC : ITS SYNTAX AND SEMANTICS, Jean-Yves Girard Laboratoire de Math ematiques Discretes, UPR 9016 – CNRS}
+	
+	\bibitem[Gom+17]{Gom+17} {CREATING A TOKENIZED FUND IN THE ETHEREUM BLOCKCHAIN, Luis Gomez Quintana, November 2017 International Business}
+\end{thebibliography}
 

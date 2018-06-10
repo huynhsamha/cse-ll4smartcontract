@@ -1,1 +1,33 @@
 \section{Bài toán 3: Đặc tả ngữ cảnh smart contract bằng linear logic}
+
+Dựa vào các điều khoản đã được nêu bên trên, dưới đây là phần đặc tả smart contract sử dụng linear logic.
+
+
+\begin{itemize}
+\item Nếu đến thời gửi hàng mà chưa có đủ tiền từ cả hai bên, smart contract sẽ trả tiền về bên đã gửi trước đó:
+	$$ tg\_gui \otimes (moneyA \oplus moneyB)  \multimap   (walletA + moneyA ) \parr (walletB + moneyB) $$
+
+\item Nếu bên B đến địa điểm nhận hàng nhưng đã quá thời gian qui định,  smart contract sẽ trả tiền lại cho cả hai bên:
+	$$ tg\_gui \otimes B^{\bot} \multimap (walletA + moneyA) \otimes (walletB + moneyB) $$
+
+\item Nếu bên B đến địa điểm nhận hàng đúng hẹn, nhưng bên A vẫn chưa chuẩn bị đủ số lượng hàng  hoặc thông tin hàng hóa khác so với thông tin mô tả ban đầu thì smart contract sẽ chuyển một khoản bồi thường cho bên B, đồng thời phần tiền còn lại cũng sẽ được trả về cho hai bên:
+	$$ tg\_gui \otimes B \otimes (goods \oplus (goods\_info \neq goods\_info2)) \multimap$$
+    $$(walletA + moneyA - moneyA\_boithuong) \otimes (walletB + moneyB + moneyA\_boithuong)$$
+
+\item Nếu bên B vận chuyển hàng đến nơi trễ, nhưng không vượt quá thời gian cho phép thì smart contract sẽ gửi một khoảng bồi thường cho bên A:
+	$$ tg\_chophep \otimes B2 \multimap walletA + moneyB\_boithuong $$
+    
+\item Nếu hết khoảng thời gian cho phép nhưng hàng vẫn chưa được  vận chuyển đến, xem như bên B không giao hàng, lúc này smart contract sẽ chuyển toàn bộ số tiền ứng với giá trị đơn hàng cho bên A và chi phí vận chuyển (bên A không trả cho bên B):
+	$$het\_tg\_chophep \otimes goods^{\bot} \multimap walletA + moneyB + moneyA$$
+    
+\item Nếu hàng  được giao nhưng không đảm bảo số lượng, chất lượng,... tùy theo mức độ thiệt hại, smart contract gửi tiền bồi thường cho bên A:
+	$$goods2^{\bot} \multimap  walletA + moneyB\_boithuong2$$
+    
+\item Sau khi quá trình vận chuyển hàng kết thúc, smart contract sẽ chuyển tiền cho bên B, bao gồm phí vận chuyển hàng, và khoản tiền ban đầu bên B gửi vào smart contract trừ đi các khoản bồi thường (nếu có), tại thời điểm hết khoảng thời gian cho phép. Ngược lại, smart contract vẫn giữ sô tiền này và chờ đến đúng thời gian sẽ thực thi:
+	$$ goods \otimes het\_tg\_chophep \multimap walletB + moneyB + moneyA $$
+    $$ goods \otimes het\_tg\_chophep^{\bot} \multimap (walletB + moneyB + moneyA)^{\bot} $$
+    
+\end{itemize}
+
+
+
